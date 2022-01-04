@@ -11,7 +11,7 @@ Introduction to computer architecture and machine language using C. Currently en
 
 <h3>EECS281: Data Structures and Algorithms</h3>
 <details>
-<summary>more...</summary>
+<summary>click for more...</summary>
   Introduction to data structures and algorithms with C++. Algorithms covered in EECS281 include sorting algorithms, binary search, binary heaps, BFS and DFS, shortest path        algorithms, the traveling salesperson problem, and dynamic programming. 
 
   Projects in EECS281:
@@ -25,7 +25,7 @@ Introduction to computer architecture and machine language using C. Currently en
 
 <h3>ENG100-650: Gaming for the Greater Good</h3>
 <details>
-<summary>more...</summary>
+<summary>click for more...</summary>
  Introduction to fundamental programming, technical communication, and the game development process. In a teams of 4, students created simple educational games for children on the Autism spectrum. The end goal was to share these games with local children at the C.S. Mott Children's Hospital, but unfortunately we were unable to do so due to the COVID-19 pandemic.
     
   <img src = "https://user-images.githubusercontent.com/72717862/147994720-9afc963d-332b-4ec2-b594-29a9c958d339.png" alt = "Hotshot Horizons Omega Release Poster">
