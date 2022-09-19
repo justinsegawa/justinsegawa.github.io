@@ -37,6 +37,5 @@ Introduction to computer architecture and machine language using C. Currently en
   <br><em>Level 1 of Hotshot Horizons</em>
 </details>
 
-<h3>Hearthstone Custom Card Expansion</h3>
 </body>
 </html>
