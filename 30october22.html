@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+        <link rel="stylesheet" href="personalwebsite.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <script src="personalwebsite.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Justin Segawa's Project Page</h1>
+            <p>WolverineSoft Devblog</p>
+        </div>
+
+        <div class="navbar">
+            <a href="index.html">Main Page</a>
+            <a href="wolvsoftblog.html">WolverineSoft Devblog</a>
+        </div>
+
+        <div class="row">
+            <div class="main">
+                <h2 class="sectionheader">End of Sprint 2 and start of Sprint 3 (10/16/22 to 10/30/22)</h2>
+                <h3 class="sectionsubheader">Introduction</h3>
+                <p>
+                    We finished sprint 2 and the studio is finalizing all features going into Project: Light. 
+                    <br></br>
+                    I gave my final feature pitch during our in-person meeting, and working on organization and balancing throughout the week.
+                </p>
+
+                <h3 class="sectionsubheader">Designing with Unity</h3>
+                <p>
+                    I started live balancing in Unity during sprint 2 and refreshed my knowledge of using git version control, and most of my tasks going forward
+                    will involve working in Unity. Unfortunately I encountered a game-breaking bug, and later after that was fixed, a misassigned class
+                    that I opted not to touch the night before the meeting, to maintain stability. Thus I have yet to push any specific balance changes 
+                    but I am equipped to do so early in sprint 3.
+                    <br></br>
+                    Project: Light's latest stable build seemed to have far fewer bugs during our playtests, although a resounding opinion was that 
+                    later encounters prove extremely difficult, an issue of top priority for me.
+                </p>
+
+                <h3 class="sectionsubheader">Upgrade Refactors</h3>
+                <p>
+                    The design team previously considered including "upgrades" or an "upgrade button" for certain systems. We ultimately determined
+                    that no such upgrade system should exist. Instead, <i>anything</i> buyable has its own item in the shop, and multiple versions 
+                    of the same system can coexist in the ship (such as a default Medbay and Burst Medbay). Passive upgrades, such as for walls/doors/ladders 
+                    of the submarine, also show up as "items" in the shop that activate once bought.
+                    <br></br>
+                    This change reduces the amount of new UI/UX needed and standardizes "upgrades" for all items. I also realized that the various Medbay 
+                    versions I made during sprint 1 proved to be <i>too</i> many, so the Level 2 and Level 3 Medbays were cut, while the Speedy Medbay 
+                    adopted the function of the deprecated Level 2 Medbay. Thankfully these changes did not seem to undo too much of the programming team's work.
+                </p>
+
+                <h3 class="sectionsubheader">Final New Features</h3>
+                <p>
+                    For tutorial balancing, two major sore spots appeared during the previous studio-wide playtest:
+                        <li>Weapon 1 kills enemy crew in 1 hit</li>
+                        <li>Weapon 2 is completely useless during the tutorial (blocked by shield)</li>
+                    <br></br>
+                    In Unity, I identified that default crew health was set to 1, so increasing their health would be an easy fix.
+                    However, enemy crew in fact lacked any crew class (such as Grunt or Medic) and were "blank" crew members. I could
+                    not edit the parameters of the crew class as easily so I held off on it for next week.
+                    <br></br>
+                    As for Weapon 2, I realized that all Non-Shield Piercing (NSP) weapons only shot 1 projectile. In other words, they were 
+                    totally ineffective against active shields. Their viability against 
+                    shields was questionable, so I opted to refactor Weapon 2 and Weapon 3, NSP weapons very similar to each other. 
+                    <br></br>
+                    <img src="Scenario_1-3_Burst.png" alt="Demonstration of Burst Laser weapon breaking shields">
+                    <br></br>
+                    <br></br>
+                    <img src="Scenario_1-4_Scrap.png" alt="Demonstration of Scrap Gun weapon breaking shields">
+                    <br></br>
+                    Weapon 2 became the Burst Laser, and Weapon 3 the Scrap Gun (inspired by the Burst Laser and Flak Gun in FTL, respectively). 
+                    Both weapons remain NSP, but fire multiple projectiles and offer deeper interaction with enemy shields. Though the Scrap Gun
+                    may prove better on average, it has some shotgun-like spread and can randomly hit rooms adjacent to the intended target. 
+                    Both weapons will usually break enemy shields completely, and sometimes deal chip damage as well.
+                    These weapons should make NSP weapons a consideration for players once again. 
+                    <br></br>
+                    The final new weapon I created was the Anti-Personnel Beam, a very simple "alternate version" of the Laser Beam.
+                    The Anti-Personnel Beam functions exactly the same way and outputs high damage, but can only damage crew members at all.
+                </p>
+
+                <p class="sectioncontent">
+                    <h3 class="sectionsubheader">Approximate hours breakdown:</h3>
+
+                    <li>Feature design: 8 hours, including
+                        <ul>
+                            <li>design mockups and documentation for new weapons</li>
+                            <li>in-person work sessions</li>
+                            <li>feature pitch slides and preparation</li>
+                        </ul>
+                    </li>
+                    <li>Learning Unity with project leads, tackling issues playtesting and balancing: 4 hours</li>
+                    <li>Iterating on + editing shop availability, how upgrades work: 2 hours</li>
+                    <li>Communication in Discord text channels and DM: 2 hours</li>
+                    <li>Weekly studio meeting: 2 hours</li>
+                    Total: 18 hours
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
