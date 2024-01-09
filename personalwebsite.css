@@ -128,3 +128,8 @@
   #accordion {
     white-space: normal;
   }
+
+  img {
+    width: 50%;
+    height: auto;
+  }
