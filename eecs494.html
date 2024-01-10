@@ -10,48 +10,80 @@
     <link rel="stylesheet" href="personalwebsite.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <script src="personalwebsite.js"></script>
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="components/toggle_dropdown.js" type="text/javascript" defer></script>
 </head>
-<body> 
-    <div class="header">
-        <h1>Justin Segawa's Project Page</h1>
-        <p>WolverineSoft Devblog</p>
-    </div>
 
-    <div class="navbar">
-        <a href="index.html">Main Page</a>
-        <a href="wolvsoftblog.html">WolverineSoft Devblog</a>
-        <a href="https://wolverinesoft-studio.itch.io/subtension">Download Subtension!</a>
-        <a href="eecs498.html">EECS498 Projects</a>
-        <a href="eecs494.html">EECS494 Projects</a>
-    </div>
+<body> 
+    
+    <header-component></header-component>
 
     <p>
         <ul class="sectioncontent">
             <h2 class="sectionheader">
-                EECS494: Introduction to Game Development
+                <a onClick="toggle(this, 'eecs494_info')">
+                    EECS494: Introduction to Game Development
+                    <span style="color:black">
+                        &#9658;
+                    </span>
+                </a>
             </h2>
 
-            Currently enrolled in this class, creating games in Unity Engine. Creating
-            an original game for release in December 2023!
+            <div id="eecs494_info" style="display:none">
+                Created original games in Unity Engine for course credit.
+                
+                <br><br>
+
+                <a href="https://kazusakamoto.itch.io/poweroffire" target="_blank" rel="noopener noreferrer">Project 3: The Power of Fire</a>
+                <li>Blast through a dark tower with explosive jumps in search of your memories and freedom.</li>
+                <li>Original game -- the final project of the class!</li>
+                <li>Developed over 6 weeks in a team of 5 using Agile workflow.</li>  
+
+                <br>
+
+                <a href="https://shamplade.itch.io/flower-defense" target="_blank" rel="noopener noreferrer">Project 2: Flower Defense</a>
+                <li>Defend your precious flower from waves of evil insects!</li>
+                <li>Game prototype demonstrating wave defense game with vertical elements.</li>
+                <li>Created over a 2-week development period, incorporating peer playtest feedback.</li>     
+
+                <br>
+
+                <a href="https://shamplade.itch.io/metroid" target="_blank" rel="noopener noreferrer">Project 1: Metroid Recreation</a>
+                <li>Play the original Metroid for NES, recreated in part!</li>
+                <li>Press 4 for a special custom level!</li>
+                <li>Developed over the course of 3 weeks with Jesus Delgado</li>
+            </div>
+
+            <!--Hotshot Horizons-->
+            <h2 class="sectionheader">
+                <a onClick="toggle(this, 'hotshot_horizons_info')">
+                    ENG100-650: Gaming for the Greater Good 
+                    <span style="color:black">
+                        &#9658;
+                    </span>
+                </a>
+            </h2>
             
-            <br>
+            <div id="hotshot_horizons_info" style="display:none">
+                <p class= "sectioncontent">
+                    Reference manual and documentation available <a href="https://docs.google.com/document/d/1KYQhij25II6VLpfXiK5vAFFQxic3It0I_ezwgbZsbEk/edit?usp=sharing">here</a>.
+                    <br><br>
+                    In a team of 4, we created an educational game for children on the Autism spectrum.
+                    The end goal was to share these games with local children at the C.S. Mott Children's Hospital, but unfortunately COVID-19 interfered with that semester.
+                </p>
+                <img src = "https://user-images.githubusercontent.com/72717862/147994720-9afc963d-332b-4ec2-b594-29a9c958d339.png" alt = "Hotshot Horizons Omega Release Poster">
+                <p class="sectioncontent">We created Hotshot Horizons, a game teaching players the fundamentals of basketball while helping them get used to constructive feedback.
+                    In each level, a virtual coach character helps the player acquire a new basketball skill or practice a previous skill. 
+                    When the player hits a shot or makes a mistake, the coach provides corresponding audio and visual feedback. 
+                    In later levels, NPC teammates and opponents come into play, culminating in a final "championship game" in which the player uses all of their skills to win. 
+                </p>    
+                <p class="sectioncontent">Each team member participated in every step of the development process, such as art, programming, and documentation.
+                    I contributed extensively to programming player actions and NPC interaction, as well as designing educational gameplay loops.
+                </p>
+                <img src = "https://user-images.githubusercontent.com/72717862/147995372-c35a2445-8379-4d4f-b6c0-133b6b7db97c.png" alt = "Screenshot of Level 1 of Hotshot Horizons">
+                <br><em class="sectioncontent">Level 1 of Hotshot Horizons</em>    
+            </div>
 
-            <br>
-
-            <a href="https://shamplade.itch.io/metroid">Project 1: Metroid Recreation</a>
-            <li>Play the original Metroid for NES, recreated in part!</li>
-            <li>Press 4 for a special custom level!</li>
-            <li>Developed over the course of 3 weeks with Jesus Delgado</li>
-
-            <a href="https://shamplade.itch.io/flower-defense">Project 2: Flower Defense</a>
-            <li>Defend your precious flower from waves of evil insects!</li>
-            <li>Game prototype demonstrating wave defense game with vertical elements.</li>
-            <li>Created over a 2-week development period, incorporating peer playtest feedback.</li>        
-            
-            <a href="https://kazusakamoto.itch.io/poweroffire">Project 3: The Power of Fire</a>
-            <li>Blast through a dark tower with explosive jumps in search of your memories and freedom.</li>
-            <li>Original game -- the final project of the class!</li>
-            <li>Developed over a 6-weeks in a team of 5 using Agile workflow.</li>      
         </ul>  
     </p>
 </body>

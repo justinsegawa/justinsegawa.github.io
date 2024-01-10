@@ -12,9 +12,10 @@ class Header extends HTMLElement {
     <div class="navbar">
         <a href="index.html">Main Page</a>
         <a href="wolvsoftblog.html">WolverineSoft Devblog</a>
-        <a href="https://wolverinesoft-studio.itch.io/subtension">Download Subtension!</a>
-        <a href="eecs498.html">EECS498 Projects</a>
-        <a href="eecs494.html">EECS494 Projects</a>
+        <a href="https://wolverinesoft-studio.itch.io/subtension" target="_blank" rel="noopener noreferrer">Download Subtension!</a>
+        <a href="eecs494.html">Gamedev Course Projects</a>
+        <a href="eecs498.html">VR/AR Projects</a>
+        <a href="coursework.html">Other Courses</a>
     </div>`;
     }
 

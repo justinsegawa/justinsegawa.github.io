@@ -10,73 +10,75 @@
     <link rel="stylesheet" href="personalwebsite.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <script src="personalwebsite.js"></script>
+    <script src="components/header.js" type="text/javascript" defer></script>
 
 </head>
 <body>
-    <div class="header">
-        <h1>Justin Segawa's Project Page</h1>
-        <p>Home</p>
-    </div>
 
-    <div class="navbar">
-        <a href="index.html">Main Page</a>
-        <a href="wolvsoftblog.html">WolverineSoft Devblog</a>
-        <a href="https://wolverinesoft-studio.itch.io/subtension">Download Subtension!</a>
-        <a href="eecs498.html">EECS498 Projects</a>
-        <a href="eecs494.html">EECS494 Projects</a>
-    </div>
+    <header-component></header-component>
 
     <div class="row">
-        <div class="side">
-            <!--<img class="selfie" src="https://cdn.discordapp.com/attachments/887928095519174678/1014688865690337310/unknown.png" alt = "Justin Segawa, Summer 2022">-->
-            <!--<p class = "selfiecaption">Summer 2022 at Carrie Blast Furnaces</p>-->
-           
-        </div>
-
         <div class="main">
             <h2 class="sectionheader">About me</h2>
             
-            <p class="sectioncontent">Hi, my name is Justin Segawa. I'm a junior pursuing a Bachelor's Degree in Computer Science at the University of Michigan Ann Arbor. I love both card games and video games and play competitively, but I am also passionate about exploring how my favorite games are designed. I’m also fluent in Japanese and studying Chinese. On this site you can find out about my latest projects, coursework, and more. Project code of all coursework is private to maintain academic integrity, but available upon request.
+            <p class="sectioncontent">Hi, my name is Justin Segawa. 
+                I'm a game designer and programmer pursuing a Bachelor's Degree in Computer Science at the University of Michigan - Ann Arbor graduating May 2024. 
+                
+                <br><br>
+
+                I'm fluent in Japanese, with localization experience, and study Mandarin as well!
+                
+                <br><br>
+                
+                Currently playing: Baldur's Gate 3, Honkai: Star Rail, Hades
             </p>
             
-            <h2 class="sectionheader">Coursework</h2>
-        
-            <h3 class="sectionsubheader">EECS370: Intro to Computer Organization</h3>
-            <p class="sectioncontent">Intro to computer science theory, such as algorithm analysis and design, computability and complexity, and computational hardness.
-            </p>
-            
-            <h3 class="sectionsubheader">EECS493: User Interface Dev</h3>
-            <p class="sectioncontent">User-centered research, design, and development, especially for UI/UX and web design.
-            </p>
+            <h2 class="sectionheader">Current Projects</h2>
 
-            <p class="sectioncontent"><b>Currently enrolled in the above classes as of the Fall ‘22 semester.</b>
-            </p>
-
-            <h3 class="sectionsubheader">EECS281: Data Structures and Algorithms</h3>
-            <p class="sectioncontent">User-centered research, design, and development, especially for UI/UX and web design. 
-                Introduction to data structures and algorithms with C++. Algorithms covered in EECS281 include sorting algorithms, binary search, binary heaps, BFS and DFS, shortest path        algorithms, the traveling salesperson problem, and dynamic programming. 
-                Projects in EECS281:
+            <p class="sectioncontent">
+                <a href="https://store.steampowered.com/app/2377230/Claws__Chaos/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/claws_chaos_thumbnail_HIGHRES.jpg" alt="Claws and Chaos thumbnail"></a>
                 <ul class="sectioncontent">
-                <li><b>Back to the Ship</b>: developed routing schemes using stacks and queues and simulated an escape from a space station represented by various tiles, such as floor and elevator tiles.</li> 
-                <li><b>Zombie Invasion</b>: used priority queues to simulate a zombie siege and the student's defenses. The program may also print various statistics, such as a running median.</li>   
-                <li><b>Log Manager</b>: implemented a log manager using hash maps that can handle various search requests.</li> 
-                <li><b>Zookeeper</b>: implemented MST algorithms and a traveling salesperson solution using branch-and-bound and heuristics, optimizing food and water delivery for a virtual zoo.</li> 
-                </ul>  
+                <li>Cute turn-based auto-battler!</li>
+                <li>Designing new characters and combat</li>
+                </ul>
+
+                <a href="https://www.grimlight.global" target="_blank" rel="noopener noreferrer">
+                    <img src="images/grimlight_thumbnail_HIGHRES.png" alt="Grimlight thumbnail"></a>
+                <ul class="sectioncontent">
+                <li>Anime turn-based strategy game featuring characters from fairy tales and folklore</li>
+                <li>Contributing to Japanese localization and translation</li>
+                </ul>
             </p>
 
-            <div id="accordion">
-                <h3 class="sectionsubheader">ENG100-650: Gaming for the Greater Good (click me!)</h3>
-                <div><p class= "sectioncontent">Introduction to fundamental programming, technical communication, and the game development process. In teams of 4, students created simple educational games for children on the Autism spectrum. The end goal was to share these games with local children at the C.S. Mott Children's Hospital, but unfortunately we were unable to do so due to the COVID-19 pandemic.
-                </p>
-                <img src = "https://user-images.githubusercontent.com/72717862/147994720-9afc963d-332b-4ec2-b594-29a9c958d339.png" alt = "Hotshot Horizons Omega Release Poster">
-                <p class="sectioncontent">We created Hotshot Horizons, a game teaching players the fundamentals of basketball while helping them get used to constructive feedback. In each level, a virtual coach character helps the player acquire a new basketball skill or practice a previous skill. When the player hits a shot or makes a mistake, the coach provides corresponding audio and visual feedback. In later levels, AI teammates and opponents come into play, culminating in a final "championship game" in which the player uses all of their skills to win. Our team wrote an extensive reference manual, available at this <a href="https://docs.google.com/document/d/1KYQhij25II6VLpfXiK5vAFFQxic3It0I_ezwgbZsbEk/edit?usp=sharing">link</a>.
-                </p>    
-                <p class="sectioncontent">Each team member participated in every step of the development process, such as art, programming, and documentation. I contributed extensively to programming player actions and NPC interaction, as well as designing educational gameplay loops.
-                </p>
-                <img src = "https://user-images.githubusercontent.com/72717862/147995372-c35a2445-8379-4d4f-b6c0-133b6b7db97c.png" alt = "Screenshot of Level 1 of Hotshot Horizons">
-                <br><em class="sectioncontent">Level 1 of Hotshot Horizons</em>    
-            </div>
+            <h2 class="sectionheader">Completed Projects</h2>
+
+            <p class="sectioncontent">
+                <a>
+                    <img src="images/subtension_logo.png" alt="Subtension thumbnail">
+                </a>
+                <ul class="sectioncontent">
+                <li>Student-made case study of FTL: Faster Than Light</li>
+                <li>Designing new characters and combat</li>
+                <li><a href="wolvsoftblog.html">Devblog</a>,
+                    <a href="https://wolverinesoft-studio.itch.io/subtension" target="_blank" rel="noopener noreferrer">itch.io page</a></li>
+                </ul>
+
+                <h3 class="sectionsubheader">
+                    <a href="eecs494.html">
+                    EECS494: Intro to Game Development
+                    </a>
+                </h3>
+                
+                <h3 class="sectionsubheader">
+                    <a href="eecs498.html">
+                    EECS498: Mixed Reality and Society
+                    </a>
+                </h3>
+            </p>
+        
         </div>
+    </div>
 
 </body>
 </html>
