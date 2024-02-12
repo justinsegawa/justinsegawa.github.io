@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+        <link rel="stylesheet" href="personalwebsite.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <script src="personalwebsite.js"></script>
+        <script src="components/header.js" type="text/javascript" defer></script>
+        <script src="components/toggle_dropdown.js" type="text/javascript" defer></script>
+    </head>
+
+    <body>
+    
+        <header-component></header-component>
+
+        <div class="row">
+            <div class="main">
+                <h2 class="sectionheader">Sprint 1 Part 1 (1/28/24 to 2/11/24)</h2>
+                <p>This semester's first sprint lasts 3 weeks instead of 2.</p>
+
+                <h3 class="sectionsubheader">Introduction</h3>
+                <p>
+                    I returned to WolverineSoft Studio after more than a year, this time as a programmer! My class schedule finally allowed me to rejoin
+                    the student-run game studio, and I'm excited to apply what I've learned in the past year to this project. 
+                    <br></br>
+                    This semester I'm working on <strong>Project Quest</strong>, an original RPG inspired by <em>Undertale</em> and <em>Franken</em>.
+                    Since Project Quest is in its 2nd semester of development, the main challenge of this sprint was getting integrated into a large, existing
+                    codebase throughout all my tasks.
+                </p>
+
+                <h3 class="sectionsubheader">Task 1: Throne Room Cutscene Revamp</h3>
+                <p>
+                    Project Quest features various cutscenes in the overworld, and my first task was focused on improving aesthetics and squashing bugs
+                    in the "throne room" cutscene; the protagonist, a druid, confronts the tyrannical king in the penultimate scene of the game:
+                    <br><br>
+                    <video controls>
+                        <source src="throneroomjanky.mp4" type="video/mp4">
+                      </video> 
+                    <br><br>
+                    There's definitely a lot to be desired from this cutscene, and I came to the conclusion that it could not reach a polished state through
+                    code improvements alone, though that wasn't for lack of trying. 
+                    <br><br>
+                    The main blocker was the lack of transition. 
+                    Since nothing separates the throne room from the preceding hallway, the player may not be in the center of the screen when they trigger
+                    the cutscene. To compensate, the current implemetation teleports the player to the center of the tiled pathway and the camera makes
+                    a jagged snap to follow. If there was a door, or the throne room existed in a separate Unity scene altogther, we could re-align
+                    the player during some kind of scene transition, like a fade-to-black. 
+                    <br><br>
+                    I explained this to the overworld team and my lead, and learned that both the throne room and the castle containing it were receiving
+                    a layout and design revamp in the next sprint. As a result, this task is on hold for now. 
+                    
+                    <h3 class="sectionsubheader">
+                        <a onClick="toggle(this, 'throneroomspecifics')">
+                            Attempted Fixes and Implementations
+                            <span style="color:black">
+                                &#9658;
+                            </span>
+                        </a>
+                    </h3>
+
+                    <div id="throneroomspecifics" style="display:none">
+                        This dropdown details all my attempts at improving the throne room cutscene, and why they did not 
+                        make it into the master branch.
+                        <br><br>
+                        Animation: the druid lacks a walk cycle animation when approaching the king. I actually fixed this issue by forcing 
+                        a walking boolean to "true" in the Unity animator, and changed the "resting" sprite of the druid such that
+                        it no longer stopped in front of the king mid-step. However the druid (player) would end the cutscene facing some unintended direction
+                        with this method...
+                        <br><br>
+                        Druid facing wrong direction: The original
+                        implementation of the cutscene did not make the player walk, but instead generated a separate GameObject with the druid's sprite
+                        just for the cutscene. Thus, once the game refocused on the <i>real</i> player after the cutscene, they would be facing whatever
+                        direction they were looking from before of the cutscene, which could be in an awkward (straight left or right).
+                        I found that the player's directional movement script determined the direction they face. I did make two attempts at
+                        overriding this, and considered tinkering with the player controls script. Unfortunately the former did not succeed and I 
+                        decided against the latter after realizing how awful of an idea that was.
+                        <br><br>
+                        Camera snapping: To reiterate, this cutscene generates a second druid just for the cutscene.
+                        The camera would snap to this new object at the beginning of the cutscene, but <i>snap back</i> to the real player after, causing
+                        glaring visuals bugs. By this point I ran out of time to work on a solution, but considering the overall revamp I would like to 
+                        re-implement this cutscene without creating a "copy" of the player.
+                    </div>
+                </p>
+
+                <h3 class="sectionsubheader">Task 2: Final Battle Cutscene</h3>
+                <p>
+                    The player faces the true antagonist of the game, an evil "hero", immediately after confronting the king. There was no cutscene 
+                    implemented yet, so dialogue would begin abruptly. I completed this task with a lot more success:
+                    <br></br>
+                    <video controls>
+                        <source src="finalherocutscene.mp4" type="video/mp4">
+                      </video> 
+                    <br></br>
+                    As the player exits the throne room, the hero simply walks up to the player from off-screen. The hero does not stop directly in front of
+                    the player, but a simple fix would be adding the aforementioned transitions in and out of the throne room so that the player 
+                    aligns with the hero.
+                    <br></br>
+                    I used Unity's Timeline functionality for the first time and learned a great deal. I tinkered with pre-existing Signal Receivers and 
+                    got into Unity's animator as well. At the same time, I experienced a lot of friction learning functionality for the first time, and I 
+                    also spent a large chunk of time understanding the pre-existing cutscene implementation.
+                    I honestly didn't expect this kind of task, since it involved far more animation and in-editor work 
+                    than programming, but I still expanded my understanding of Unity as a whole.
+                </p>
+
+                <h3 class="sectionsubheader">Task 3: Final <i>Battle</i></h3>
+                <p>
+                    Continued from the cutscene, the actual final battle itself would not trigger, even though the implementation existed. The fix turned out
+                    to be extremely simple. The following command was originally empty from the dialogue-to-battle flow: 
+                    <br></br>
+                    <img src="hero_battle_ineditor.png"> 
+                    <br></br>
+                    However, I ended up spending an embarrassing length of time on this issue. The above Runtime Only function appears about 6 clicks deep
+                    in the inspector, somewhat hidden within a Dialogue Controller object; in Project Quest, 
+                    <strong>dialogue leads to battles leads to dialogue.</strong>
+                    It felt like of those things that are really easy to find 
+                    once you know where it is, but if you don't...
+                    <br><br>
+                    I found the final battle prefab and the function to trigger it within the first hour of working on this task, but I simply had no
+                    idea it ran the way it did. I attempting debugging, scouring components for reference, analyzing how previous battles trigger,
+                    but over the course of multiple hours I never thought to look in the Hero's Dialogue Controller.
+                    <br></br>
+                    ...For whatever reason, I also never thought to <i>ask</i> a fellow programmer with prior experience on the codebase. Once I finally 
+                    did so, we solved the issue within an hour. This should be a lesson I've already learned...but asking for help goes a long way
+                    when working with new codebases.
+                </p>
+
+                <p class="sectioncontent">
+                    <h3 class="sectionsubheader">Approximate hours breakdown (includes implementation, testing, bugfixing, reading the docs,
+                        etc.):</h3>
+                    <li>Meetings: 4 hours</li>
+                    <li>Throne room cutscene: 8 hours</li>
+                    <li>Final battle cutscene: 6 hours</li>
+                    <li>Final battle bugfix: 5 hours</li>
+                    <li>Communication in Discord text channels and DM: 1 hour</li>
+                    Total: 24 hours over 2 weeks
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
