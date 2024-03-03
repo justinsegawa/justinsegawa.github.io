@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+        <link rel="stylesheet" href="personalwebsite.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <script src="personalwebsite.js"></script>
+        <script src="components/header.js" type="text/javascript" defer></script>
+        <script src="components/toggle_dropdown.js" type="text/javascript" defer></script>
+    </head>
+
+    <body>
+    
+        <header-component></header-component>
+
+        <div class="row">
+            <div class="main">
+                <h2 class="sectionheader">Sprint 1 Part 2 (2/11/24 to 2/25/24)</h2>
+
+                <h3 class="sectionsubheader">Task 1: New Bridge Cutscene</h3>
+                <p>
+                    After revamping pre-existing cutscenes last sprint, I created a brand new cutscene for the first time. In this scene, 
+                    the protagonist (Druid) meets the tyrannical king's court Jester, who sics the previously defeated Hero onto the Druid. 
+                    Outside of dialogue, this cutscene wasn't implemented at all before, and it was missing elements such as the Jester entirely. 
+                    <br><br>
+                    <video controls width="500">
+                        <source src="repairedbridge.mp4" type="video/mp4">
+                      </video> 
+                    <br><br>
+                    I didn't expect new cutscene creation to take as long as it did. My experience in the last sprint helped a lot, but 
+                    I got tripped up by linking GameObjects to each other and ensuring that each piece of the scene
+                    referenced the correct objects. On the other hand, actually animating the characters and working in the Unity Timeline tab
+                    was much easier, thanks to what I learned from last sprint's tasks. A lot of work also went into reverse engineering other,
+                    bug-free, cutscenes. This especially helped me understand how to transition from the overworld to a fight scene and back.
+                    <br><br>
+                    Unfortunately I was set back when some dependencies got way too tangled, and I had to revert a commit to my branch. Next time 
+                    I work on a new cutscene I plan on making more frequent commits. Unlike scripting, I found it way harder to undo and keep track
+                    of changes with so many moving pieces in-editor.                
+                </p>
+
+                <h3 class="sectionsubheader">Task 2: Final Battle Dialogue Fix</h3>
+                <p>
+                    My next major task was fixing the very final dialogue not triggering after defeating the final boss. From testing, I found that 
+                    the dialogue played just fine -- when the player actually <emph>defeated</emph> the final boss.
+                    <br></br>
+                    As a time-saving measure, running away from any battle is treated the same as winning it in our development version of Project Quest.
+                    However, previous devs still included functionality to run different dialogue depending on the final outcome of a battle: 
+                    <br></br>
+                    <img src="dialogue_dependencies.png"> 
+                    <br></br>
+                    I found that if someone forgets to add the same Dialogue Object dependency to "Battle Won" and "Battle Run", then running away won't count as a win anymore. 
+                    I ended up spending some more time experimenting with what would happen (or break) when deleting or adding dependencies into these slots,
+                    on my own experimental branch.
+                    After this, I really feel that I'm starting to get a better grasp on Project Quest's codebase.
+                </p>
+
+                <p class="sectioncontent">
+                    <h3 class="sectionsubheader">Approximate hours breakdown (includes implementation, testing, bugfixing, reading the docs,
+                        etc.):</h3>
+                    <br></br>
+                    Due to the overlap with spring break I had less tasks than the previous sprint, so I logged remaining hours playing
+                    <a href="https://splendidland.itch.io/franken" target="_blank" rel="noopener noreferrer">Franken</a> and
+                    <a href="https://store.steampowered.com/app/2557580/Cellosseum/" target="_blank" rel="noopener noreferrer">Cellosseum</a>.
+                    I also watched playthrough videos of Undertale over break, then tried (and failed) to defeat the
+                    <a href="https://jcw87.github.io/c2-sans-fight/">Sans fight</a>.
+                    <br>
+                    Franken, along with Undertale, inspired the original pitch for Project Quest, and I had never played it before.
+                    <br>
+                    Celloseum is a WolverineSoft game! Since I've only just returned to WolvSoft after a year and a half, I thought it would
+                    be useful to play through and see what's expected from a more recent WolvSoft title.
+                    <br></br>
+                    <li>Meetings: 4 hours</li>
+                    <li>Jester and Hero cutscene: 10 hours</li>
+                    <li>Dialogue after final battle bugfix: 4 hours</li>
+                    <li>Revisiting Undertale for the first time since 2016: 2 hours</li>
+                    <li>Communication in Discord text channels and DM: 1 hours</li>
+                    <li>Extra playtesting: 1 hour</li>
+                    <li>Cellosseum playthrough: 1 hour</li>
+                    <li>Franken playthrough: 1 hour</li>
+                    Total: 24 hours over 2 weeks
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
