@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+        <link rel="stylesheet" href="personalwebsite.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <script src="personalwebsite.js"></script>
+        <script src="components/header.js" type="text/javascript" defer></script>
+        <script src="components/toggle_dropdown.js" type="text/javascript" defer></script>
+    </head>
+
+    <body>
+    
+        <header-component></header-component>
+
+        <div class="row">
+            <div class="main">
+                <h2 class="sectionheader">Final Feature Sprint (3/24/24 to 4/7/24)</h2>
+                <p>This was the final sprint for adding any new features or design changes -- it's all polish from here!</p>
+
+                <h3 class="sectionsubheader">Task 1: Create Hero Save Point Prefab</h3>
+                <p>
+                    The antagonistic "hero" of Project Quest mysteriously comes back from the dead multiple times throughout our story.
+                    This is actually his ability to write to a save, but the reveal of this power felt very sudden. We planned on scattering 
+                    save points throughout the game world to hint at this, but the current save point wouldn't do (it was just a floating
+                    white circle).
+                    <br><br>
+                    I created a new prefab and made sure it was functionally compatible anywhere in the world. I was meant to also implement
+                    updated art assets and start placing the save point into the overworld. Unfportunately the new sprite was
+                    not completed in time for this sprint, and I reached out but did not hear back on any concrete details for where the object
+                    should go. I still made sure the prefab was ready for placement at any time, and added some fun temp art in the meantime:
+                    <br><br>
+                    <img src="bed_savepoint.png"> 
+                    <br><br>
+                </p>
+
+                <h3 class="sectionsubheader">Task 2: Kid Lost in the Forest</h3>
+                <p>
+                    The narrative team came up with our first "sidequest", in which a young kid follows the player into the forest. He gets into
+                    a bunch of trouble, and the player needs to help him back home. At least, that was the elevator pitch for this sidequest, but
+                    unfortunately I was never provided the necessary implementation details, such as game state and dialogue. This meant the task
+                    was a lot more open-ended but definitely couldn't be as expansive as originally envisioned. I ended up writing my own one-off
+                    conversation into the game and left it at that:
+                    <br></br>
+                    <video controls width="500">
+                        <source src="forest_kid_convo.mp4" type="video/mp4">
+                    </video> 
+                    <br></br>
+                    This was a great opportunity to work with some systems I had less experience with, though. Getting raw dialogue into the game
+                    was easy, but there was depth to the visual novel-like dialogue canvas. Moving or zooming into character portraits during
+                    dialogue involved figuring out the correct dependencies and cross-referencing other dialogue scenes to get working. It was
+                    more complicated than expected but seeing small creative decisions appear right on screen was very rewarding.
+                </p>
+
+                <h3 class="sectionsubheader">Task 3: Kid Chase Softlock</h3>
+                <p>
+                    Pressing space triggers all interactions and progresses dialogue in Project Quest. Spamming space too much and too fast
+                    often breaks the game:
+                    <br></br>
+                    <video controls width="500">
+                        <source src="spam_space_softlock.mp4" type="video/mp4">
+                    </video> 
+                    <br></br>
+                    I'd fixed a similar issue before by disabling colliders when they were no longer needed to trigger dialogue, but little did
+                    I know this task would take the longest amount of time this whole sprint. 
+                    <br></br>
+                    For my first attempt I just tried to reuse the collider disable script, but the dialogue flow made it difficult to use.
+                    Prior to the scene above, the player "plays tag" with the kid, chasing him around the entire town and starting <i>separate</i>
+                    conversations with him at certain checkpoints. Thus, disabling the kid's collider after any given conversation would just
+                    immediately break the conversations that followed.
+                    <br></br>
+                    What if the script just checked if there wasn't any more dialogue left, then? I whipped up a revamped script component
+                    that took in dialogue data as a dependency and canceled repeated dialogue, and it worked perfectly.
+                    <br></br>
+                    The real challenge for this task was <i>testing</i> my code. For every change and test, I needed to play through the 
+                    <i>entire</i> tag-and-chase sequence with the kid, just to make sure none of his dialogue broke. I eventually wisened up
+                    and used a custom save state once I was confident the chase wasn't being affected, but this definitely wore me down a little!
+                </p>
+
+                <h3 class="sectionsubheader">Task 4: Sprite Pivot Points</h3>
+                <p>
+                    Certain sprites (deer and bridge) had overlap issues with the player:
+                    <br></br>
+                    <img src="deer_overlap.png">  
+                    <br></br>
+                    The player would exist behind the deer in-game, but appeared in front and thus laid on top of the deer.
+                    <br></br>
+                    I looked up some tutorials (<a href="https://www.youtube.com/watch?v=fmWDeSVxaoQ">1</a>,<a 
+                    href="https://www.youtube.com/watch?v=Oy7FCo2Refg">2</a>) and they both pointed me to adjusting the Transparency Sort Axis.
+                    <br></br>
+                    <img src="transparency_sort_axis.png">  
+                    <br></br>
+                    The axis was already (0, 2, 0) in Project Quest, and while one tutorial recommended only the y-axis greater than 0, the other
+                    showed a solution with only the z-axis greater than 0. Player movement used the same axes in both videos, which made things
+                    even more confusing!
+                    <br></br>
+                    After experimenting with the transparency sort axis for a while I started looking into changing sprite layer dynamically using
+                    a script, but thankfully I didn't waste too much time on that. On a hunch I did some math with the player and deer transforms, 
+                    and luckily I realized that the problem lay in the deers' collider sizes. Their colliders were just too small all along, so
+                    the player was just walking over them <i>in-world</i>, and the sort axis was doing its job just fine. Each deer also had a
+                    differently aligned collider, which helped to hide this issue.
+                    <br></br>
+                    <img src="deer_collider_discrepancy.png">  
+                    <br></br>
+                    The bridge sprite I looked into had a sorting issue as well. Once the player reaches its halfway point, they clip through:
+                    <br></br>
+                    <video controls width="500">
+                        <source src="bridge_clipping.mp4" type="video/mp4">
+                    </video> 
+                    <br></br>
+                    I tested a fix on this by changing the sprite's pivot point, but the same sprite was used for a separate, 
+                    completely horizontal bridge, so doing that would break the latter bridge. Once again the task in Jira described
+                    a new sprite for the fully vertical bridge, but it arrived late so it will be implemented in the next sprint.
+                </p>
+
+                <p class="sectioncontent">
+                    <h3 class="sectionsubheader">Approximate hours breakdown (includes implementation, testing, bugfixing, reading the docs,
+                        etc.):</h3>
+                    <li>Meetings: 4 hours</li>
+                    <li>Hero Save Point: 2 hours</li>
+                    <li>Lost Kid: 4 hours</li>
+                    <li>Kid Chase Softlock: 7 hours</li>
+                    <li>Sprite Pivot Points: 5 hours</li>
+                    <li>Discord channel communications: 1 hour</li>
+                    <li>Delegate functions in Unity <a href="https://gamedevbeginner.com/events-and-delegates-in-unity/">tutorial+reading</a>: 1 hour
+                        (someone brought these up, not used in Project Quest but seemed like something I should know!)
+                    </li>
+                    Total: 24 hours over 2 weeks
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
