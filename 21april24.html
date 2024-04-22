@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+        <link rel="stylesheet" href="personalwebsite.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <script src="personalwebsite.js"></script>
+        <script src="components/header.js" type="text/javascript" defer></script>
+        <script src="components/toggle_dropdown.js" type="text/javascript" defer></script>
+    </head>
+
+    <body>
+    
+        <header-component></header-component>
+
+        <div class="row">
+            <div class="main">
+                <h2 class="sectionheader">Final Sprint (4/7/24 to 4/21/24)</h2>
+                <p>Final sprint focused on bug fixing and polish updates.</p>
+
+                <h3 class="sectionsubheader">Task 1: Resize Child Sprite</h3>
+                <p>
+                    The young child encountered throughout the game, Ollei, was a little bit too small in the overworld. This task was conceptually
+                    simple, just increasing the sprite size, but it did involve being thorough. Some cutscenes and world positions could break or look awkward
+                    with the new size. I was not in charge of fixing those specific cutscenes, but I playtested every scene with Ollei to double-check these.  
+                    Changing Ollei's prefab also didn't reflect in-game, so I needed to manually enlargen him in each scene. A merge conflict also obliterated
+                    the sprite changes so I also got to speedrun the sprite changes and testing a second time.
+                </p>
+
+                <h3 class="sectionsubheader">Task 2: Mob Cutscene Improvements</h3>
+                <p>
+                    The return to cutscenes and the Unity Timeline. I worked on 2 separate cutscenes:
+                    <li>An angry mob of villagers chases the player out of their village</li>
+                    <li>That same mob tries to drive the player out when the player returns to their now-destroyed village</li>
+                    <br></br>
+                    <video controls width="500">
+                        <source src="mob_initial.mp4" type="video/mp4">
+                    </video>
+                    <video controls width="500">
+                        <source src="mob_revisit.mp4" type="video/mp4">
+                    </video> 
+                    <br></br>
+                    In the initial version of the first cutscene, only 3 villagers approached the player and gave chase. I added more villagers to
+                    fill up the screen and accost the player, and each of them chases too! Unfortunately villager run cycles were out
+                    of scope, but the villagers definitely feel more like a mob. On top of animating the chase and playtesting the cutscene, I also
+                    fixed some bugs such as villagers sharing Animation Controllers with Ollei by default -- suddenly the kid would age into a grown man
+                    in totally separate cutscenes!
+                    <br></br>
+                    My goal for the second cutscene was mostly the same, as only a single villager represented the mob so far. This cutscene was relatively
+                    lighter since the villagers only needed to walk into frame, but it still required some debugging including preventing the animal
+                    squad from being interactable too early. I also pointed out that the animals sort of trample over the crowd at the end of the
+                    cutscene (as in the video), so in the following meeting I was also assigned adding a fade to black transition and I implemented that
+                    as well.
+                    <br></br>
+                    These two cutscenes easily took up the bulk of my commitment this sprint. My honest feelings -- working with the Unity Timeline can be
+                    very finicky, and definitely very time-consuming. I would've preferred to lean into my programming role more, but on the bright side
+                    breathing life into cutscenes felt rewarding in its own way.   
+                </p>
+
+                <h3 class="sectionsubheader">Task 3: Bug Jam</h3>
+                <p>
+                    Less of a concrete task and more a debugging session, our leads Allie and Leo invited the programming and QA team to a bug jam.
+                    Almost everyone showed up which was very cool! We spent the session finding and squashing bugs with each other. Notable bugs I worked
+                    on were a hardlock(!) bug after losing a battle against the Deer Council, and spamming the space bar too quickly either softlocking or
+                    leading to repeated dialogue.
+                </p>
+
+                <h3 class="sectionsubheader">Task 4: Final Bug Reports</h3>
+                <p>
+                    The final task for Project Quest (now Soul of the Forest) was a final bug search and report. Anyone
+                    who could contribute before our game showcase played through the game looking for as many issues as possible,
+                    including ones that were known but never formally reported, and logged them while fixing them if possible.
+                    Bugs I logged included the Mega Hit (player's special move) not charging or activating when it should, visual novel sprites
+                    disappearing altogether when pressing space too quickly, and one funny "bug":
+                    <br><br>
+                    <img src="forgotten_squirrel.png"> 
+                    <br><br>
+                    The Forest scene has a squirrel hidden so far behind some trees that no one remembered it existed, so it still has a placeholder
+                    old man sprite in both the overworld and dialogue! Guess we forgot where we buried the squirrel.
+                </p>
+
+                <p class="sectioncontent">
+                    <h3 class="sectionsubheader">Approximate hours breakdown (includes implementation, testing, bugfixing, reading the docs,
+                        etc.):</h3>
+                    <li>Meetings: 4 hours</li>
+                    <li>Ollei Sprite Changes: 2 hours</li>
+                    <li>Mob Cutscene Improvements: 10 hours split over both weeks of sprint</li>
+                    <li>Bug Jam: 5 hours</li>
+                    <li>Final Bug Reports: 2 hours</li>
+                    <li>Discord channel communications: 1 hour</li>
+                    Total: 24 hours over 2 weeks
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
